@@ -240,7 +240,7 @@ h1 span {
 .check-btn {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: 7px;
   border: 2px solid var(--border);
   background: transparent;
   cursor: pointer;
