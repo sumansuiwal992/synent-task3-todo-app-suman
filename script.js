@@ -2,7 +2,7 @@
 let tasks = JSON.parse(localStorage.getItem('taskflow_tasks') || '[]');
 let currentFilter = 'all';
 
-/* ---------- SELECTORS ---------- */
+/*  SELECTORS  */
 const taskInput = document.getElementById('taskInput');
 const addBtn    = document.getElementById('addBtn');
 const taskList  = document.getElementById('taskList');
@@ -13,16 +13,12 @@ const statTotal   = document.getElementById('stat-total');
 const statDone    = document.getElementById('stat-done');
 const statPending = document.getElementById('stat-pending');
 
-/* ============================================================
-   SAVE — write tasks array to localStorage
-   ============================================================ */
+/*  SAVE — write tasks array to localStorage */
 function save() {
   localStorage.setItem('taskflow_tasks', JSON.stringify(tasks));
 }
 
-/* ============================================================
-   UPDATE STATS — update the 3 number cards at the top
-   ============================================================ */
+/*  UPDATE STATS — update the 3 number cards at the top */
 function updateStats() {
   const total   = tasks.length;
   const done    = tasks.filter(t => t.completed).length;
@@ -33,20 +29,17 @@ function updateStats() {
   statPending.textContent = pending;
 }
 
-/* ============================================================
-   ESCAPE HTML — prevent XSS when rendering task text
-   ============================================================ */
+/* ESCAPE HTML — prevent XSS when rendering task text */
 function escapeHtml(str) {
-  return str
+   if (!str) return '';
+   return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+      .replace(/"/g, '&quot;');
 }
 
-/* ============================================================
-   RENDER — build the task list based on current filter
-   ============================================================ */
+/* RENDER — build the task list based on current filter */
 function render() {
   // Filter tasks based on selected tab
   const filtered = tasks.filter(t => {
@@ -106,9 +99,7 @@ function render() {
   updateStats();
 }
 
-/* ============================================================
-   ADD TASK — create a new task and prepend it to the list
-   ============================================================ */
+/*  ADD TASK — create a new task and prepend it to the list */
 function addTask() {
   const text = taskInput.value.trim();
 
@@ -122,13 +113,13 @@ function addTask() {
 
   // Create new task object
   const newTask = {
-    id:        Date.now(),       // unique ID using timestamp
-    text:      text,
+    id: Date.now(),  
+    text:text,      
     completed: false,
     createdAt: new Date().toISOString()
   };
 
-  tasks.unshift(newTask); // add to top of list
+  tasks.unshift(newTask); 
   save();
   render();
 
@@ -137,9 +128,7 @@ function addTask() {
   taskInput.focus();
 }
 
-/* ============================================================
-   TOGGLE TASK — mark as done or pending
-   ============================================================ */
+/* TOGGLE TASK — mark as done or pending */
 function toggleTask(id) {
   const task = tasks.find(t => t.id === id);
   if (task) {
@@ -149,18 +138,14 @@ function toggleTask(id) {
   }
 }
 
-/* ============================================================
-   DELETE TASK — remove a task by id
-   ============================================================ */
+/* DELETE TASK — remove a task by id */
 function deleteTask(id) {
   tasks = tasks.filter(t => t.id !== id);
   save();
   render();
 }
 
-/* ============================================================
-   CLEAR COMPLETED — remove all completed tasks at once
-   ============================================================ */
+/*  CLEAR COMPLETED — remove all completed tasks at once */
 function clearCompleted() {
   const completedCount = tasks.filter(t => t.completed).length;
   if (completedCount === 0) return; // nothing to clear
@@ -173,9 +158,7 @@ function clearCompleted() {
   }
 }
 
-/* ============================================================
-   SET FILTER — switch between All / Pending / Completed
-   ============================================================ */
+/* SET FILTER — switch between All / Pending / Completed */
 function setFilter(filterValue) {
   currentFilter = filterValue;
 
@@ -191,9 +174,7 @@ function setFilter(filterValue) {
   render();
 }
 
-/* ============================================================
-   EVENT LISTENERS
-   ============================================================ */
+/* EVENT LISTENERS */
 
 // Add button click
 addBtn.addEventListener('click', addTask);
@@ -213,7 +194,6 @@ tabs.forEach(tab => {
 // Clear completed button
 clearBtn.addEventListener('click', clearCompleted);
 
-/* ============================================================
-   INIT — render on page load
-   ============================================================ */
+/* INIT — render on page load
+    */
 render();

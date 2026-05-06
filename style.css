@@ -1,16 +1,13 @@
-/* ============================================================
-   TASKFLOW — style.css
-   Responsive To-Do App Stylesheet
-   ============================================================ */
 
-/* ---------- RESET ---------- */
+
+/*  RESET */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ---------- CSS VARIABLES ---------- */
+/*  CSS VARIABLES  */
 :root {
   --bg:           #0d0d0f;
   --card:         #16161a;
@@ -41,9 +38,7 @@ body {
     radial-gradient(ellipse 50% 40% at 80% 80%, rgba(200, 241, 53, 0.08) 0%, transparent 60%);
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
+/*  HEADER */
 header {
   width: 100%;
   max-width: var(--max-width);
@@ -56,17 +51,6 @@ header {
   align-items: center;
   gap: 10px;
   margin-bottom: 6px;
-}
-
-/* Glowing green dot */
-.logo-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-  flex-shrink: 0;
-  animation: pulse 2.5s ease infinite;
 }
 
 h1 {
@@ -87,9 +71,7 @@ h1 span {
   margin-left: 24px;
 }
 
-/* ============================================================
-   STATS ROW
-   ============================================================ */
+/*  STATS ROW*/
 .stats {
   display: flex;
   gap: 14px;
@@ -127,9 +109,7 @@ h1 span {
   margin-top: 5px;
 }
 
-/* ============================================================
-   ADD TASK SECTION
-   ============================================================ */
+/* ADD TASK SECTION */
 .add-section {
   width: 100%;
   max-width: var(--max-width);
@@ -144,7 +124,7 @@ h1 span {
 
 .task-input {
   flex: 1;
-  min-width: 0; /* prevents overflow on small screens */
+  min-width: 0; 
   background: var(--card);
   border: 1.5px solid var(--border);
   border-radius: 12px;
@@ -188,16 +168,14 @@ h1 span {
   transform: scale(0.97);
 }
 
-/* ============================================================
-   FILTER TABS
-   ============================================================ */
+/* FILTER TABS */
 .filter-tabs {
   display: flex;
   gap: 8px;
   width: 100%;
   max-width: var(--max-width);
   margin-bottom: 18px;
-  flex-wrap: wrap; /* wraps on tiny screens */
+  flex-wrap: wrap;
 }
 
 .tab {
@@ -224,9 +202,7 @@ h1 span {
   color: var(--accent);
 }
 
-/* ============================================================
-   TASK LIST
-   ============================================================ */
+/*  TASK LIST */
 .task-list {
   width: 100%;
   max-width: var(--max-width);
@@ -319,9 +295,7 @@ h1 span {
   background: rgba(255, 68, 102, 0.08);
 }
 
-/* ============================================================
-   EMPTY STATE
-   ============================================================ */
+/*  EMPTY STATE */
 .empty {
   text-align: center;
   padding: 52px 24px;
@@ -339,9 +313,7 @@ h1 span {
   line-height: 1.5;
 }
 
-/* ============================================================
-   BOTTOM BAR
-   ============================================================ */
+/* BOTTOM BAR */
 .bottom-bar {
   width: 100%;
   max-width: var(--max-width);
@@ -367,9 +339,7 @@ h1 span {
   color: var(--red);
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
+/* ANIMATIONS */
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -385,9 +355,7 @@ h1 span {
   50%       { box-shadow: 0 0 22px var(--accent); }
 }
 
-/* ============================================================
-   RESPONSIVE — TABLET (max 600px)
-   ============================================================ */
+/*  RESPONSIVE — TABLET (max 600px) */
 @media (max-width: 600px) {
   body {
     padding: 28px 12px 60px;
@@ -433,9 +401,7 @@ h1 span {
   }
 }
 
-/* ============================================================
-   RESPONSIVE — MOBILE (max 400px)
-   ============================================================ */
+/* RESPONSIVE — MOBILE (max 400px) */
 @media (max-width: 400px) {
   h1 {
     font-size: 1.6rem;
